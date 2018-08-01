@@ -12,7 +12,7 @@ public class ErrorCode {
 
     private Integer code;
 
-    Private String desc;
+    private String desc;
 
     ErrorCode(Integer code, String desc) {
         this.code = code;

@@ -14,7 +14,7 @@ public class AccessContext {
         token.set(tokenStr);
     }
     // might be redudant but i do it for safety
-    public stativ void clearAccessKey() {
+    public static void clearAccessKey() {
         token.remove();
     }
 }
