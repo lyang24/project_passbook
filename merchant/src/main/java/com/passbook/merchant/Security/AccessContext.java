@@ -1,10 +1,11 @@
 package com.passbook.merchant.Security;
+import java.lang.ThreadLocal;
 
 /**
  * use ThreadLocal to store evey single token's data
  */
 public class AccessContext {
-    private static final ThreadLocal<String> token = new TheadLocal<String>();
+    private static final ThreadLocal<String> token = new ThreadLocal<String>();
 
     public static String getToken() {
         return token.get();

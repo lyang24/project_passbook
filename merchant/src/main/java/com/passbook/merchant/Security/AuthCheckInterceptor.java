@@ -1,6 +1,6 @@
 package com.passbook.merchant.Security;
 
-import antlr.StringUtils;
+import org.springframework.util.StringUtils;
 import com.passbook.merchant.constant.Constants;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -16,14 +16,14 @@ public class AuthCheckInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = httpServletRequest.getHeader(Constants.TOKEN_STRING);
+        String token = HttpServletRequest.getHeader(Constants.TOKEN_STRING);
         if (StringUtils.isEmpty(token)) {
             throw new Exception("no token info in header" + Constants.TOKEN_STRING);
         }
         if (!token.equals(Constants.TOKEN)) {
-            throw new exception("Wrong token in header" + Constants.TOKEN_STRING);
+            throw new Exception("Wrong token in header" + Constants.TOKEN_STRING);
         }
-        AccessContext.setToken(tokenn);
+        AccessContext.setToken(token);
         return true;
     }
 

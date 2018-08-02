@@ -1,6 +1,6 @@
 package com.passbook.merchant.constant;
 
-public class TemplateColors {
+public enum TemplateColors {
     RED(1, "Red"),
     GREEN(2, "Green"),
     BLUE(3, "Blue");
