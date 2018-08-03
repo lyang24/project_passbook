@@ -1,4 +1,4 @@
-package com.passbook.merchant.Security;
+package com.passbook.merchant.security;
 import java.lang.ThreadLocal;
 
 /**

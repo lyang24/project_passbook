@@ -63,5 +63,6 @@ public class CreateMerchantsRequest {
         merchants.setLogoUrl(logoUrl);
         merchants.setBusinessLicenseUrl(businessLicenseUrl);
         merchants.setAddress(address);
+        return merchants;
     }
 }

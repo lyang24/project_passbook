@@ -1,13 +1,11 @@
-package com.passbook.merchant.Security;
+package com.passbook.merchant.security;
 
 import org.springframework.util.StringUtils;
 import com.passbook.merchant.constant.Constants;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.yaml.snakeyaml.scanner.Constant;
 
-import javax.persistence.Access;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +14,7 @@ public class AuthCheckInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = HttpServletRequest.getHeader(Constants.TOKEN_STRING);
+        String token = request.getHeader(Constants.TOKEN_STRING);
         if (StringUtils.isEmpty(token)) {
             throw new Exception("no token info in header" + Constants.TOKEN_STRING);
         }

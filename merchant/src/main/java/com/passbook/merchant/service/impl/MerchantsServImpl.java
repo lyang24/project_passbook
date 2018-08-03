@@ -1,5 +1,7 @@
 package com.passbook.merchant.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.passbook.merchant.constant.Constants;
 import com.passbook.merchant.constant.ErrorCode;
 import com.passbook.merchant.dao.MerchantsDao;
 import com.passbook.merchant.entity.Merchants;
@@ -10,6 +12,7 @@ import com.passbook.merchant.vo.PassTemplate;
 import com.passbook.merchant.vo.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MerchantsServImpl implements IMerchantsServ {
     /** Merchants database implementation */
-    private MerchantsDao merchantsDao;
-
+    private final MerchantsDao merchantsDao;
+    /** kafka client*/
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
     @Autowired
     public MerchantsServImpl(MerchantsDao merchantsDao) {
         this.merchantsDao = merchantsDao;
@@ -62,6 +67,20 @@ public class MerchantsServImpl implements IMerchantsServ {
 
     @Override
     public Response dropPassTemplate(PassTemplate template) {
-        return null;
+        Response response = new Response();
+        ErrorCode errorCode = template.validate(merchantsDao);
+        if (errorCode != ErrorCode.SUCCESS) {
+            response.setErrorCode(errorCode.getCode());
+            response.setErrorMsg(errorCode.getDesc());
+        } else {
+            String passTemplate = JSON.toJSONString(template);
+            kafkaTemplate.send(
+                    Constants.TEMPLATE_TOPIC,
+                    Constants.TEMPLATE_TOPIC,
+                    passTemplate
+            );
+            log.info("DropPassTemplates: {}", passTemplate);
+        }
+        return response;
     }
 }
