@@ -1,0 +1,6 @@
+create_namespace 'pb'
+
+create 'pd:user', {NAME => 'b', VERSIONS => '3', TLL => '2147483647', 'BLOOMFILTER' => 'ROW'}
+create 'pd:pass', {NAME => 'i', VERSIONS => '3', TLL => '2147483647', 'BLOOMFILTER' => 'ROW'}
+create 'pd:passtemplate', {NAME => 'b', VERSIONS => '3', TLL => '2147483647', 'BLOOMFILTER' => 'ROW'}, {NAME => 'b', VERSIONS => '3', TLL => '2147483647', 'BLOOMFILTER' => 'ROW'}
+create 'pd:feedback', {NAME => 'i', VERSIONS => '3', TLL => '2147483647', 'BLOOMFILTER' => 'ROW'}
