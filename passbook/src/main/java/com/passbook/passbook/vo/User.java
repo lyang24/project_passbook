@@ -11,6 +11,9 @@ public class User {
     /** user id */
     private Long id;
 
+    public User(long toLong, BaseInfo baseInfo, OtherInfo otherInfo) {
+    }
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

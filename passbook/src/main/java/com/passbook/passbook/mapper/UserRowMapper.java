@@ -2,9 +2,9 @@ package com.passbook.passbook.mapper;
 
 import com.passbook.passbook.constant.Constants;
 import com.passbook.passbook.vo.User;
+import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.util.Bytes;
 import com.spring4all.spring.boot.starter.hbase.api.RowMapper;
-import org.apache.hbase.client.Result;
-import org.apache.hbase.utils.Bytes;
 
 
 public class UserRowMapper implements RowMapper<User> {
@@ -30,8 +30,6 @@ public class UserRowMapper implements RowMapper<User> {
                 Bytes.toString(result.getValue(FAMILY_O, ADDRESS))
         );
 
-        return new User(
-                Bytes.toLong(result.getRow()), baseInfo, otherInfo
-        );
+        return new User(Bytes.toLong(result.getRow()), baseInfo, otherInfo);
     }
 }
