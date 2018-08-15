@@ -16,7 +16,7 @@ public class Constants {
     public class UserTable {
         /** Hbase table name for users */
         public static final String TABLE_NAME = "pb:user";
-        /** basic info row family*/
+        /** basic info column family*/
         public static final String FAMILY_B = "b";
         /** user name*/
         public static final String NAME = "name";
@@ -24,7 +24,7 @@ public class Constants {
         public static final String AGE = "age";
         /** user sex*/
         public static final String SEX = "sex";
-        /** extra info row family*/
+        /** extra info column family*/
         public static final String FAMILY_O = "o";
         /** phone number */
         public static final String PHONE = "phone";
@@ -51,7 +51,7 @@ public class Constants {
         public static final String HAS_TOKEN = "has_token";
 
         public static final String BACKGROUND = "background";
-        /** limit information row family */
+        /** limit information column family */
         public static final String FAMILY_C = "c";
 
         public static final String LIMIT = "limit";

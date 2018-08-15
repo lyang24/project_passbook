@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,7 +15,7 @@ public class LogObject {
 
     private long userId;
 
-    private long timestamp;
+    private Date timestamp;
     /** client ip*/
     private String remoteIp;
 
