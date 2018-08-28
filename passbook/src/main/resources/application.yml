@@ -2,7 +2,7 @@ spring:
   application:
     name: Passbook
   datasource:
-    url: jdbc:mysql>//127.0.0.1:3306/passbook?autoReconnect=true
+    url: jdbc:mysql://localhost:3306/passbook?autoReconnect=true
     username: root
     password:
   kafka:
