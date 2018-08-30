@@ -21,6 +21,14 @@ public class PassTemplate {
 
     private long limit;
 
+    public boolean isHasToken() {
+        return hasToken;
+    }
+
+    public void setHasToken(boolean hasToken) {
+        this.hasToken = hasToken;
+    }
+
     private boolean hasToken;
 
     private Integer background;
